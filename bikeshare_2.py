@@ -21,20 +21,20 @@ def get_filters():
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         cities = ['chicago', 'new york city', 'washington']
-        city = input("Enter the city (chicago, new york city, washington) you are interested in. \n")
+        city = input("Enter the city (chicago, new york city, washington) you are interested in. ")
         city = city.lower()
         if city not in cities:
-            print("Please enter a valid city name.\n")
+            print("Please enter a valid city name.")
         else:
             break
 
 
     # get user input for month (all, january, february, ... , june)
     while True:
-        month = input("Enter the month you are intersted in (january, february, ... , june). For all data type \"all\". \n")
+        month = input("Enter the month you are intersted in (january, february, ... , june). For all data type \"all\". ")
         month = month.lower()
         if month not in MONTHS:
-            print("Please enter a valid month.\n")
+            print("Please enter a valid month.")
         else:
             break
 
@@ -42,10 +42,10 @@ def get_filters():
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         days = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-        day = input("Enter the day of the week you are intersted in (monday, tuesday, ... sunday). For all days type \"all\". \n")
+        day = input("Enter the day of the week you are intersted in (monday, tuesday, ... sunday). For all days type \"all\". ")
         day = day.lower()
         if day not in days:
-            print("Please enter a valid day.\n")
+            print("Please enter a valid day.")
         else:
             break
 
@@ -99,7 +99,7 @@ def time_stats(df):
         df - Pandas DataFrame containing city data filtered by month and day
     """
 
-    print('\nCalculating The Most Frequent Times of Travel...\n')
+    print('Calculating The Most Frequent Times of Travel...')
     start_time = time.time()
 
     # display the most common month
@@ -117,7 +117,7 @@ def time_stats(df):
     print("Most common start houd in a day is {}.".format(hour_common))
 
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
@@ -129,7 +129,7 @@ def station_stats(df):
 
     """
 
-    print('\nCalculating The Most Popular Stations and Trip...\n')
+    print('Calculating The Most Popular Stations and Trip...')
     start_time = time.time()
 
     # display most commonly used start station
@@ -151,7 +151,7 @@ def station_stats(df):
     print("Most common start and end station tiip is {}, and is used {} times.".format(start_end_common, start_end_count))
 
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
@@ -163,7 +163,7 @@ def trip_duration_stats(df):
 
     """
 
-    print('\nCalculating Trip Duration...\n')
+    print('Calculating Trip Duration...')
     start_time = time.time()
 
     # display total travel time
@@ -176,7 +176,7 @@ def trip_duration_stats(df):
     print("The mean travel time is {} seconds.".format(mean_travel_time))
 
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
@@ -189,32 +189,27 @@ def user_stats(df, city):
 
     """
 
-    print('\nCalculating User Stats...\n')
+    print('Calculating User Stats...')
     start_time = time.time()
 
     # Display counts of user types
-    user_type_count = df['User Type'].value_counts()
-    print("The following are the User Type and their counts: \n{}".format(user_type_count))
+    print("The following are the User Type and their counts: {}".format(df['User Type'].value_counts()))
 
 
     # Display counts of gender
     if city == 'washington':
-        print("\nNo Gender and Birth Year data for Washington. Sorry!")
+        print("No Gender and Birth Year data for Washington. Sorry!")
     else:
-        gender_count = df['Gender'].value_counts()
-        print("\nThe following is the Gender distrbution: \n{}".format(gender_count))
+        print("The following is the Gender distrbution: {}".format(df['Gender'].value_counts()))
 
 
         # Display earliest, most recent, and most common year of birth
-        recent_birth_year = int(df['Birth Year'].max())
-        earliest_birth_year = int(df['Birth Year'].min())
-        common_birth_year = int(df['Birth Year'].value_counts().idxmax())
-        print("\nThe earliest birth year is {}.".format(earliest_birth_year))
-        print("The most recent birth year is {}.".format(recent_birth_year))
-        print("The most common birth year is {}.".format(common_birth_year))
+        print("The earliest birth year is {}.".format(int(df['Birth Year'].min())))
+        print("The most recent birth year is {}.".format(int(df['Birth Year'].max())))
+        print("The most common birth year is {}.".format(int(df['Birth Year'].value_counts().idxmax()))
 
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 def display_raw_data(df):
@@ -227,16 +222,16 @@ def display_raw_data(df):
 
     df_size = df.size
     ind = 1
-    see_raw_data = input("Would you like to see the raw data? Enter 'y' or 'n'.\n")
+    see_raw_data = input("Would you like to see the raw data? Enter 'y' or 'n'.")
     while (ind * 5) < df_size:
         if see_raw_data.lower() == 'y':
             print(df.iloc[((ind - 1) * 5) : (ind * 5)])
         elif see_raw_data.lower() == 'n':
             break
         else:
-            print("Choose wisely.\n")
+            print("Choose wisely.")
         ind += 1
-        see_raw_data = input("Would you like to see the next 5 rows? Enter 'y' or 'n'.\n")
+        see_raw_data = input("Would you like to see the next 5 rows? Enter 'y' or 'n'.")
 
     print('-'*40)
 
@@ -252,7 +247,7 @@ def main():
         user_stats(df, city)
         display_raw_data(df)
 
-        restart = input('\nIf you like to restart enter \'y\' and press Enter, else just press Enter.\n')
+        restart = input('If you like to restart enter \'y\' and press Enter, else just press Enter.')
         if restart.lower() != 'y':
             break
 

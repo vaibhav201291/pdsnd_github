@@ -9,7 +9,9 @@ Use python to analyze bake share data available for major cities.
 Calculate statistics for the usage and the people using it.
 
 ### Files used
-Include the files used
+.gitignore
+bikeshare_2.py
+README.md
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.

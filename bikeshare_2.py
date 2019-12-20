@@ -192,25 +192,20 @@ def user_stats(df, city):
     start_time = time.time()
 
     # Display counts of user types
-    user_type_count = df['User Type'].value_counts()
-    print("The following are the User Type and their counts: \n{}".format(user_type_count))
+    print("The following are the User Type and their counts: \n{}".format(df['User Type'].value_counts()))
 
 
     # Display counts of gender
     if city == 'washington':
         print("\nNo Gender and Birth Year data for Washington. Sorry!")
     else:
-        gender_count = df['Gender'].value_counts()
-        print("\nThe following is the Gender distrbution: \n{}".format(gender_count))
+        print("\nThe following is the Gender distrbution: \n{}".format(df['Gender'].value_counts()))
 
 
         # Display earliest, most recent, and most common year of birth
-        recent_birth_year = int(df['Birth Year'].max())
-        earliest_birth_year = int(df['Birth Year'].min())
-        common_birth_year = int(df['Birth Year'].value_counts().idxmax())
-        print("\nThe earliest birth year is {}.".format(earliest_birth_year))
-        print("The most recent birth year is {}.".format(recent_birth_year))
-        print("The most common birth year is {}.".format(common_birth_year))
+        print("\nThe earliest birth year is {}.".format(int(df['Birth Year'].min())))
+        print("The most recent birth year is {}.".format(int(df['Birth Year'].max())))
+        print("The most common birth year is {}.".format(int(df['Birth Year'].value_counts().idxmax()))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
